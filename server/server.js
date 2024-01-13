@@ -12,7 +12,8 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Replace with your Mongo Atlas URI
-const MONGO_URI = '';
+const MONGO_URI =
+  'mongodb+srv://rahulgoyal2:r119XAtq0D2Mx0zI@auth-cluster.j0yv5vd.mongodb.net/?retryWrites=true&w=majority';
 if (!MONGO_URI) {
   throw new Error('You must provide a Mongo Atlas URI');
 }
@@ -27,9 +28,7 @@ mongoose.set('strictQuery', false);
 mongoose.connect(MONGO_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to Mongo Atlas instance.'))
-  .on('error', (error) =>
-    console.log('Error connecting to Mongo Atlas:', error)
-  );
+  .on('error', (error) => console.log('Error connecting to Mongo Atlas:', error));
 
 // Configures express to use sessions.  This places an encrypted identifier
 // on the users cookie.  When a user makes a request, this middleware examines
