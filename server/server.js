@@ -25,7 +25,7 @@ mongoose.Promise = global.Promise;
 // on success or failure
 mongoose.set('strictQuery', false);
 
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection
   .once('open', () => console.log('Connected to Mongo Atlas instance.'))
   .on('error', (error) => console.log('Error connecting to Mongo Atlas:', error));
